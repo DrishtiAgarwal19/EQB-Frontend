@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { signup } = useAuth();
@@ -20,7 +21,7 @@ const Signup = () => {
     // Here you would normally send signup data to backend
     // For demo, we assume signup is successful if passwords match
     if (email && password) {
-      signup({ name, email });
+      signup({ name, email, phone });
       navigate("/");
     } else {
       alert("Please fill all required fields");
@@ -49,6 +50,20 @@ const Signup = () => {
                 onChange={(e) => setName(e.target.value)}
                 className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
                 placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-semibold text-gray-700">
+                Phone Number
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+                placeholder="Your phone number"
               />
             </div>
             <div>
